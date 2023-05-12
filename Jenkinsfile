@@ -25,7 +25,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'sonarqubeID', variable: 'SONAR_TOKEN')]) {
           withSonarQubeEnv('sonar') {
-            sh 'mvn sonar:sonar'
+            sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=maeva2023_geolocation2 -Dsonar.organization=maeva2023'
                 }
               }
              }
