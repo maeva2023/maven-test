@@ -6,7 +6,7 @@ pipeline {
     environment {
     registry = '815965821970.dkr.ecr.us-east-1.amazonaws.com/devops-terra'
     registryCredential = 'aws-credentials'
-    SONAR_TOKEN = credentials('sonar-token')
+    SONAR_TOKEN = credentials('sonarqubeID')
     dockerimage = ''
   }
     stages {
@@ -23,7 +23,7 @@ pipeline {
         }
         stage("SonarQube Scan") {
       steps {
-        withCredentials([string(credentialsId: 'c081a971e1207212e722d754cb206c8c470f578f', variable: 'SONAR_TOKEN')]) {
+        withCredentials([string(credentialsId: 'sonarqubeID', variable: 'SONAR_TOKEN')]) {
           withSonarQubeEnv('sonar') {
             sh 'mvn sonar:sonar'
                 }
