@@ -17,7 +17,7 @@ pipeline {
         stage ("Sonarqube scan") {
           steps{
           withSonarQubeEnv('sonar') {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=maeva2023_geolocation2 -Dsonar.organization=maeva2023'   
+        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=maeva2023_geolocation2 -Dsonar.organization=maeva2023'   
                }
           }
         }
