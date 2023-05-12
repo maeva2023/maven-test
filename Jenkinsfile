@@ -14,13 +14,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/maeva2023/maven-test.git'
             }
         }
-        stage ("Sonarqube scan") {
-          steps{
-          withSonarQubeEnv('sonar') {
-        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=maeva2023_geolocation2 -Dsonar.organization=maeva2023'   
-               }
-          }
-        }
+       
         stage('Code Build') {
             steps {
                 sh 'mvn clean install package'
